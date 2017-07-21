@@ -1,0 +1,55 @@
+{
+  "name": "angular-permission-control",
+  "version": "0.0.0",
+  "engines": {
+    "node": ">= 5.4.1 < 7",
+    "npm": ">= 5.2"
+  },
+  "scripts": {
+    "demo-app": "gulp serve:devapp"
+  },
+  "dependencies": {
+    "@angular/common": "^4.2.6",
+    "@angular/compiler": "^4.2.6",
+    "@angular/core": "^4.2.6",
+    "@angular/http": "^4.2.6",
+    "@angular/platform-browser": "^4.2.6",
+    "@angular/platform-browser-dynamic": "^4.2.6",
+    "core-js": "^2.4.1",
+    "lodash": "^4.17.4",
+    "rxjs": "^5.4.2",
+    "systemjs": "^0.20.15",
+    "zone.js": "^0.8.13"
+  },
+  "devDependencies": {
+    "@angular/tsc-wrapped": "^4.2.6",
+    "@types/chalk": "^0.4.31",
+    "@types/fs-extra": "^3.0.3",
+    "@types/glob": "^5.0.30",
+    "@types/gulp": "^3.8.33",
+    "@types/lodash": "^4.14.70",
+    "@types/node": "^8.0.11",
+    "@types/run-sequence": "0.0.29",
+    "chalk": "^2.0.1",
+    "firebase-tools": "^3.9.1",
+    "fs-extra": "^3.0.1",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-clean-css": "^3.6.0",
+    "gulp-connect": "^5.0.0",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-if": "^2.0.2",
+    "gulp-sass": "^3.1.0",
+    "http-rewrite-middleware": "^0.1.6",
+    "magic-string": "^0.22.2",
+    "resolve-bin": "^0.4.0",
+    "rollup": "^0.45.2",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "run-sequence": "^2.0.0",
+    "sorcery": "^0.10.0",
+    "ts-node": "^3.2.0",
+    "tsconfig-paths": "^2.2.0",
+    "typescript": "^2.4.0",
+    "uglify-js": "^3.0.24"
+  }
+}
