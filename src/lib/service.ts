@@ -4,7 +4,13 @@ import { Subject } from 'rxjs/Subject';
 
 import { PermissionConfig, PERMISSION_CONFIGURATION } from './config';
 import { Permission } from './model';
-import {intersectionBy} from './utils';
+import { intersectionBy, anyBy } from './utils';
+
+export class PermissionMode {
+  static And = 'and';
+  static Or = 'or';
+  static Custom = 'custom';
+}
 
 @Injectable()
 export class PermissionControlService {
@@ -12,6 +18,10 @@ export class PermissionControlService {
 
   constructor(@Inject(PERMISSION_CONFIGURATION) private config: PermissionConfig) {}
 
+  /**
+   * Set initial permissions.
+   * @param permissions Initial permissions
+   */
   public initPermissions(permissions: Permission[] | string[]) {
     var result: Subject<Permission[]> = new Subject<Permission[]>();
     var resultPermissions: Permission[] = [];
@@ -31,7 +41,7 @@ export class PermissionControlService {
     });
   }
 
-  public checkPermissions(permissions: Permission[] | string[]): Observable<boolean> {
+  public checkPermissions(permissions: Permission[] | string[], mode: string = PermissionMode.And): Observable<boolean> {
     var result: Subject<boolean> = new Subject<boolean>();
     var tempPermissions: Permission[] = [];
     if (permissions.length > 0) {
@@ -46,8 +56,21 @@ export class PermissionControlService {
     }
 
     this._initPermissions.then((initPermissions: Permission[]) => {
-      const temp = intersectionBy(tempPermissions, initPermissions, p => p.value);
-      result.next(temp.length == permissions.length);
+      let temp: any[];
+      switch (mode) {
+        case PermissionMode.And:
+          temp = intersectionBy(tempPermissions, initPermissions, p => p.value);
+          result.next(temp.length == permissions.length);
+          break;
+        case PermissionMode.Or:
+          temp = intersectionBy(tempPermissions, initPermissions, p => p.value);
+          result.next(temp.length > 0);
+          break;
+        default:
+          result.next(false);
+          break;
+      }
+
     });
     return result.asObservable();
   }

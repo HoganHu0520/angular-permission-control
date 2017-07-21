@@ -2,11 +2,13 @@ import {NgModule, ModuleWithProviders} from '@angular/core';
 
 import {PermissionConfig, PERMISSION_CONFIGURATION} from './config';
 import {PermissionControlService} from './service';
+import {PermissionDirective} from './directives';
 
 
 @NgModule({
-  imports: [
-  ]
+  imports: [],
+  declarations: [PermissionDirective],
+  exports: [PermissionDirective]
 })
 export class AngularPermissionControlModule {
   static forRoot(config?: PermissionConfig): ModuleWithProviders {
