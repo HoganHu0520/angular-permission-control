@@ -9,14 +9,16 @@ import { intersectionBy, anyBy } from './utils';
 export class PermissionMode {
   static And = 'and';
   static Or = 'or';
-  static Custom = 'custom';
 }
 
 @Injectable()
 export class PermissionControlService {
   private _initPermissions: Promise<Permission[]>;
+  private _defaultPermissionMode: string;
 
-  constructor(@Inject(PERMISSION_CONFIGURATION) private config: PermissionConfig) {}
+  constructor(@Inject(PERMISSION_CONFIGURATION) private config: PermissionConfig) {
+    this._defaultPermissionMode = config.defaultPermissionMode || PermissionMode.And;
+  }
 
   /**
    * Set initial permissions.
@@ -41,7 +43,7 @@ export class PermissionControlService {
     });
   }
 
-  public checkPermissions(permissions: Permission[] | string[], mode: string = PermissionMode.And): Observable<boolean> {
+  public checkPermissions(permissions: Permission[] | string[], mode: string = this._defaultPermissionMode): Observable<boolean> {
     var result: Subject<boolean> = new Subject<boolean>();
     var tempPermissions: Permission[] = [];
     if (permissions.length > 0) {
@@ -57,12 +59,14 @@ export class PermissionControlService {
 
     this._initPermissions.then((initPermissions: Permission[]) => {
       let temp: any[];
-      switch (mode) {
+      switch (mode.toLowerCase()) {
         case PermissionMode.And:
+        case '&':
           temp = intersectionBy(tempPermissions, initPermissions, p => p.value);
           result.next(temp.length == permissions.length);
           break;
         case PermissionMode.Or:
+        case '|':
           temp = intersectionBy(tempPermissions, initPermissions, p => p.value);
           result.next(temp.length > 0);
           break;

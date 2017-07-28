@@ -30,10 +30,6 @@ export class PermissionDirective {
     this._refreshViewContainer();
   }
 
-  @Input() set hhPermissionRunBy(fn: () => boolean) {
-    this._runBy = fn;
-  }
-
   private _refreshViewContainer() {
     this.permissionService.checkPermissions(this._permissions, this._permissionMode).subscribe(result => {
       if (result && !this.hasView) {
