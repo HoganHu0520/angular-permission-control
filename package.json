@@ -1,6 +1,6 @@
 {
   "name": "angular-permission-control",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "engines": {
     "node": ">= 5.4.1 < 7",
     "npm": ">= 5.2"
