@@ -1,0 +1,9 @@
+.vscode/
+node_modules/
+src/
+tools/
+build-config.js
+gulpfile.js
+tsconfig.json
+.editorconfig
+.gitignore
