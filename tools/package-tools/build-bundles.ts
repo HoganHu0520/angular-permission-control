@@ -46,12 +46,12 @@ export async function buildPackageBundles(entryFile: string, packageName: string
     entry: fesm2014File,
     dest: umdFile,
     format: 'umd'
+  }).then(() => {
+    // Create a minified UMD bundle using UglifyJS
+    uglifyJsFile(umdFile, umdMinFile);
   });
 
   await remapSourcemap(umdFile);
 
-  // Create a minified UMD bundle using UglifyJS
-  uglifyJsFile(umdFile, umdMinFile);
-
-  await remapSourcemap(umdMinFile);
+  // await remapSourcemap(umdMinFile);
 }

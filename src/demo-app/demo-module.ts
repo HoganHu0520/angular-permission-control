@@ -11,9 +11,7 @@ import { AppCompnent } from './app/app';
   imports: [
     BrowserModule,
     AngularPermissionControlModule.forRoot({
-      grantType: 'client_credential',
-      appid: 'wx42aadc26bc38857b',
-      secret: '8cdac9e66a746af995818a39932d415f'
+      defaultPermissionMode: 'or'
     }),
   ],
   providers: [
