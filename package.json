@@ -6,8 +6,15 @@
     "npm": ">= 5.2"
   },
   "scripts": {
-    "demo-app": "gulp serve:devapp"
+    "demo-app": "gulp serve:devapp",
+    "build": "gulp build:devapp"
   },
+  "keywords": [
+    "angular2",
+    "ng",
+    "permission",
+    "typescript"
+  ],
   "main": "dist/bundles/angular-permission-control.umd.min.js",
   "dependencies": {
     "@angular/common": "^4.2.6",
