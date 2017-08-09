@@ -10,10 +10,10 @@ const buildVersion = require('./package.json').version;
 /** License that will be placed inside of all created bundles. */
 const buildLicense = `/**
  * @license
- * Copyright Google Inc. All Rights Reserved.
+ * Copyright 2017-2018 Hogan Hu. All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * found in the LICENSE file at https://github.com/HoganHu0520/angular-permission-control/blob/master/LICENSE
  */`;
 
 module.exports = {
