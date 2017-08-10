@@ -1,6 +1,6 @@
-[![npm version](https://badge.fury.io/js/angular-permission-control.svg)](https://badge.fury.io/js/angular-permission-control)
-
 # Angular Permission Control
+
+[![npm version](https://badge.fury.io/js/angular-permission-control.svg)](https://badge.fury.io/js/angular-permission-control)
 
 ## Initial Permissions
 Add default permission: p1, p2, p3
